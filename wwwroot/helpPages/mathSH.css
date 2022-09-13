@@ -1,0 +1,11 @@
+a:target {
+    background: lightblue;
+  }
+
+.nonTitre{
+    font-size: 16px;
+}
+
+p:not(.nonTitre){
+    color: red;
+}
