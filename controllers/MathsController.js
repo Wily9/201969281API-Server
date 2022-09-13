@@ -32,8 +32,8 @@ module.exports =
                                         this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) / Number(this.HttpContext.path.params.y);
                                     }
                                     else if(this.HttpContext.path.params.op == "%"){
-                                        //this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) % Number(this.HttpContext.path.params.y);
-                                        this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) / Number(this.HttpContext.path.params.y) * 100 + " %";
+                                        this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) % Number(this.HttpContext.path.params.y);
+                                        //this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) / Number(this.HttpContext.path.params.y) * 100 + " %";
                                     }  
                                     // else ifs for ! / p / np
                                 }
