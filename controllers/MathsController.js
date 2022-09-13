@@ -33,8 +33,7 @@ module.exports =
                                     }
                                     else if(this.HttpContext.path.params.op == "%"){
                                         this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) % Number(this.HttpContext.path.params.y);
-                                        //this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) / Number(this.HttpContext.path.params.y) * 100 + " %";
-                                    }  
+                                    } 
                                     // else ifs for ! / p / np
                                 }
                                 // If both of them are not numbers, look if x is a number
@@ -51,7 +50,29 @@ module.exports =
                             else if(!this.HttpContext.path.params.x){
                                 // x is null, look if y is null
                                 if(!this.HttpContext.path.params.y){
-                                    this.HttpContext.path.params.error = "Parameter 'x' and 'y' are missing";
+                                    // y is null also, look if n is null
+                                    if(!this.HttpContext.path.params.n){
+                                        // if x, y and n are null, parameters are missing for any request
+                                        this.HttpContext.path.params.error = "Parameters are missing";
+                                    }
+                                    else{
+                                        // If n is not null, look if n is a number
+                                        if(!isNaN(this.HttpContext.path.params.n)){
+                                            if(this.HttpContext.path.params.op == "!"){
+                                                
+                                            } 
+                                            else if(this.HttpContext.path.params.op == "p"){
+        
+                                            }
+                                            else if(this.HttpContext.path.params.op == "np"){
+        
+                                            }
+                                        }
+                                        else{
+                                            this.HttpContext.path.params.error = "Parameter n is not a number";
+                                        }
+                                    }
+                                    
                                 }
                                 else if(isNaN(this.HttpContext.path.params.y)){
                                     this.HttpContext.path.params.error = "Parameter 'x' is missing and 'y' is not a number";
