@@ -41,7 +41,7 @@ module.exports =
             }
             else{
                 if(this.HttpContext.path.params.op){
-                        if(this.HttpContext.path.params == (op, x, y, n)){
+                        if(this.HttpContext.path.params == ("op", "x", "y", "n")){
                             // If x and y are not null
                             if(this.HttpContext.path.params.x && this.HttpContext.path.params.y){ 
                                 // If x and y are both numbers
