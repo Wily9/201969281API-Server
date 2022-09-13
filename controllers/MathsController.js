@@ -45,23 +45,28 @@ module.exports =
                             // If x and y are not null
                             if(this.HttpContext.path.params.x && this.HttpContext.path.params.y){ 
                                 // If x and y are both numbers
-                                if(!isNaN(this.HttpContext.path.params.x) && !isNaN(this.HttpContext.path.params.y) && count(this.HttpContext.path.params) == 3){ 
-                                    // Add the numbers together and put them in a new parameter called value
-                                    if(this.HttpContext.path.params.op == " "){
-                                        this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) + Number(this.HttpContext.path.params.y);
+                                if(!isNaN(this.HttpContext.path.params.x) && !isNaN(this.HttpContext.path.params.y)){ 
+                                    if(count(this.HttpContext.path.params) == 3){
+                                        // Add the numbers together and put them in a new parameter called value
+                                        if(this.HttpContext.path.params.op == " "){
+                                            this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) + Number(this.HttpContext.path.params.y);
+                                        }
+                                        else if(this.HttpContext.path.params.op == "-"){
+                                            this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) - Number(this.HttpContext.path.params.y);
+                                        }
+                                        else if(this.HttpContext.path.params.op == "*"){
+                                            this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) * Number(this.HttpContext.path.params.y);
+                                        }
+                                        else if(this.HttpContext.path.params.op == "/"){
+                                            this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) / Number(this.HttpContext.path.params.y);
+                                        }
+                                        else if(this.HttpContext.path.params.op == "%"){
+                                            this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) % Number(this.HttpContext.path.params.y);
+                                        } 
                                     }
-                                    else if(this.HttpContext.path.params.op == "-"){
-                                        this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) - Number(this.HttpContext.path.params.y);
+                                    else{
+                                        this.HttpContext.path.params.error = "Invalid parameters";
                                     }
-                                    else if(this.HttpContext.path.params.op == "*"){
-                                        this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) * Number(this.HttpContext.path.params.y);
-                                    }
-                                    else if(this.HttpContext.path.params.op == "/"){
-                                        this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) / Number(this.HttpContext.path.params.y);
-                                    }
-                                    else if(this.HttpContext.path.params.op == "%"){
-                                        this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) % Number(this.HttpContext.path.params.y);
-                                    } 
                                     // else ifs for ! / p / np
                                 }
                                 // If both of them are not numbers, look if x is a number
