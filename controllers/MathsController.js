@@ -35,6 +35,7 @@ module.exports =
                                         //this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) % Number(this.HttpContext.path.params.y);
                                         this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) / Number(this.HttpContext.path.params.y) * 100 + " %";
                                     }  
+                                    // else ifs for ! / p / np
                                 }
                                 // If both of them are not numbers, look if x is a number
                                 else if(isNaN(this.HttpContext.path.params.x)){
