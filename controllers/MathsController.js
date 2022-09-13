@@ -1,5 +1,32 @@
 const path = require('path');
 const fs = require('fs');
+const mathScript = require('../wwwroot/MathsManager/js/MathsFunctions');
+
+function factorial(n){
+    if(n===0||n===1){
+      return 1;
+    }
+    return n*factorial(n-1);
+}
+function isPrime(value) {
+    for(var i = 2; i < value; i++) {
+        if(value % i === 0) {
+            return false;
+        }
+    }
+    return value > 1;
+}
+function findPrime(n){
+    let primeNumer = 0;
+    for ( let i=0; i < n; i++){
+        primeNumer++;
+        while (!isPrime(primeNumer)){
+            primeNumer++;
+        }
+    }
+    return primeNumer;
+}
+
 module.exports =
     class MathsController extends require('./Controller') {
         constructor(HttpContext) {
@@ -59,13 +86,13 @@ module.exports =
                                         // If n is not null, look if n is a number
                                         if(!isNaN(this.HttpContext.path.params.n)){
                                             if(this.HttpContext.path.params.op == "!"){
-                                                
+                                                this.HttpContext.path.params.value = factorial(this.HttpContext.path.params.n);
                                             } 
                                             else if(this.HttpContext.path.params.op == "p"){
-        
+                                                this.HttpContext.path.params.value = isPrime(this.HttpContext.path.params.n);
                                             }
                                             else if(this.HttpContext.path.params.op == "np"){
-        
+                                                this.HttpContext.path.params.value = findPrime(this.HttpContext.path.params.n);
                                             }
                                         }
                                         else{
