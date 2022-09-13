@@ -11,14 +11,14 @@
     <p>
         Ce service api donne l'option de faire:
         <ul>
-            <li><a id="+">Une addition</a></li>
-            <li><a id="-">Une soustraction</a></li>
-            <li><a id="*">Une multiplication</a></li>
-            <li><a id="/">Une division</a></li>
-            <li><a id="%">Le pourcentage</a></li>
-            <li><a id="!">La factorielle d'un nombre entier</a></li>
-            <li><a id="p">La vérification d'un nombre premier</a></li>
-            <li><a id="np">Le nième nombre premier</a></li>
+            <li><a href="+">Une addition</a></li>
+            <li><a href="-">Une soustraction</a></li>
+            <li><a href="*">Une multiplication</a></li>
+            <li><a href="/">Une division</a></li>
+            <li><a href="%">Le calcul du reste</a></li>
+            <li><a href="!">La factorielle d'un nombre entier</a></li>
+            <li><a href="p">La vérification d'un nombre premier</a></li>
+            <li><a href="np">Le nième nombre premier</a></li>
         </ul>
 
     </p>
@@ -27,11 +27,51 @@
         op (qui spécifie l'opération demandez)<br>
         x (qui servira du premier chiffre)<br>
         y (qui servira du deuxième chiffre)<br>
-        n (qui servira pour les opérations qui font rapport à un entier premier)
+        n (qui servira pour les opérations qui font rapport à un entier premier)<br><br>
+
+        Pour faire une requête, il faudra ajouter à l'URL les paramètres demandés d'une certaine façon. <br>
+        Par défaut l'URL sans opération sera celle-ci: https://201969281-api-server.glitch.me/api/maths? <br>
+        N'oubliez pas les "&" entre les paramètres, sinon le service ne fonctionnera pas.
     </p>
-    <p>
-        Pour faire une requête il faut écrire les paramètres d'une certaine façon. <br>
-        Dans l'URL que vous avez envoyé ()
-    </p>
+    <h1><a id="+">Pour l'addition (+):</a></h1>
+        <p>Il vous faut spécifier l'opération (op), le chiffre x et le chiffre y, par exemple si vous vouliez faire 20+5, vous feriez:<br>
+        https://201969281-api-server.glitch.me/api/maths?<strong>op=+&x=20&y=5</strong>
+        </p>
+
+    <h1><a id="-">Pour la soustraction (-):</a></h1>
+        <p>Il vous faut spécifier l'opération (op), le chiffre x et le chiffre y, par exemple si vous vouliez faire 20-5, vous feriez:<br>
+        https://201969281-api-server.glitch.me/api/maths?<strong>op=-&x=20&y=5</strong>
+        </p>
+
+    <h1><a id="*">Pour la multiplication (*):</a></h1>
+        <p>Il vous faut spécifier l'opération (op), le chiffre x et le chiffre y, par exemple si vous vouliez faire 20*5, vous feriez:<br>
+        https://201969281-api-server.glitch.me/api/maths?<strong>op=*&x=20&y=5</strong>
+        </p>
+
+    <h1><a id="/">Pour la division (/):</a></h1>
+        <p>Il vous faut spécifier l'opération (op), le chiffre x et le chiffre y, par exemple si vous vouliez faire 20/5, vous feriez:<br>
+        https://201969281-api-server.glitch.me/api/maths?<strong>op=/&x=20&y=5</strong>
+        </p>
+
+    <h1><a id="%">Pour le calcul du reste (%):</a></h1>
+        <p>Il vous faut spécifier l'opération (op), le chiffre x et le chiffre y, par exemple si vous vouliez faire 20%3, vous feriez:<br>
+        https://201969281-api-server.glitch.me/api/maths?<strong>op=%&x=20&y=3</strong>
+        </p>
+
+    <h1><a id="!">Pour la factorielle d'un nombre entier (!):</a></h1>
+        <p>Il vous faut spécifier l'opération (op) et le nombre entier (n), par exemple si vous vouliez faire la factorielle de 5, vous feriez:<br>
+        https://201969281-api-server.glitch.me/api/maths?<strong>op=!&n=5</strong>
+        </p>
+
+    <h1><a id="p">Pour la vérification d'un nombre premier (p):</a></h1>
+        <p>Il vous faut spécifier l'opération (op) et le nombre entier (n) par exemple si vous vouliez faire la vérification de 5, vous feriez:<br>
+        https://201969281-api-server.glitch.me/api/maths?<strong>op=p&n=5</strong>
+        </p>
+
+    <h1><a id="np">Pour le nième nombre premier (np):</a></h1>
+        <p>Il vous faut spécifier l'opération (op) et le nombre entier (n) par exemple si vous vouliez trouver le 5e nombre premier, vous feriez:<br>
+        https://201969281-api-server.glitch.me/api/maths?<strong>op=np&n=5</strong>
+        </p>
+
 </body>
 </html>
