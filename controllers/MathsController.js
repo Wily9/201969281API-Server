@@ -41,7 +41,6 @@ module.exports =
             }
             else{
                 if(this.HttpContext.path.params.op){
-                        if(this.HttpContext.path.params == ("op", "x", "y", "n")){
                             // If x and y are not null
                             if(this.HttpContext.path.params.x && this.HttpContext.path.params.y){ 
                                 // If x and y are both numbers
@@ -119,10 +118,10 @@ module.exports =
                             else{ this.HttpContext.path.params.error = "Parameter 'y' is missing"; }
                                 // Send response
                                 this.HttpContext.response.JSON(this.HttpContext.path.params);
-                        }
-                        else{
-                            this.HttpContext.path.params.error = "Parameters are invalid";
-                        }
+                        // }
+                        // else{
+                        //     this.HttpContext.path.params.error = "Parameters are invalid";
+                        // }
                     }else {
                         this.HttpContext.path.params.error = "Parameter 'op' is missing";
                         this.HttpContext.response.JSON(this.HttpContext.path.params);
