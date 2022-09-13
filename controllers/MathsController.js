@@ -41,6 +41,7 @@ module.exports =
             }
             else{
                 if(this.HttpContext.path.params.op){
+                        if(this.HttpContext.path.params == (op, x, y, n)){
                             // If x and y are not null
                             if(this.HttpContext.path.params.x && this.HttpContext.path.params.y){ 
                                 // If x and y are both numbers
@@ -85,15 +86,21 @@ module.exports =
                                     else{
                                         // If n is not null, look if n is a number
                                         if(!isNaN(this.HttpContext.path.params.n)){
-                                            if(this.HttpContext.path.params.op == "!"){
-                                                this.HttpContext.path.params.value = factorial(this.HttpContext.path.params.n);
-                                            } 
-                                            else if(this.HttpContext.path.params.op == "p"){
-                                                this.HttpContext.path.params.value = isPrime(this.HttpContext.path.params.n);
+                                            if(Number.isInteger(this.HttpContext.path.params.n)){
+                                                if(this.HttpContext.path.params.op == "!"){
+                                                    this.HttpContext.path.params.value = factorial(this.HttpContext.path.params.n);
+                                                } 
+                                                else if(this.HttpContext.path.params.op == "p"){
+                                                    this.HttpContext.path.params.value = isPrime(this.HttpContext.path.params.n);
+                                                }
+                                                else if(this.HttpContext.path.params.op == "np"){
+                                                    this.HttpContext.path.params.value = findPrime(this.HttpContext.path.params.n);
+                                                }
                                             }
-                                            else if(this.HttpContext.path.params.op == "np"){
-                                                this.HttpContext.path.params.value = findPrime(this.HttpContext.path.params.n);
+                                            else{
+                                                this.HttpContext.path.params.error = "Parameter n is not an even number";
                                             }
+                                            
                                         }
                                         else{
                                             this.HttpContext.path.params.error = "Parameter n is not a number";
@@ -110,11 +117,15 @@ module.exports =
                                 this.HttpContext.path.params.error = "Parameter 'x' is not a number and 'y' is missing";
                             }
                             else{ this.HttpContext.path.params.error = "Parameter 'y' is missing"; }
-                            // Send response
-                            this.HttpContext.response.JSON(this.HttpContext.path.params);
-                } else {
-                    this.HttpContext.path.params.error = "Parameter 'op' is missing";
-                    this.HttpContext.response.JSON(this.HttpContext.path.params);
+                                // Send response
+                                this.HttpContext.response.JSON(this.HttpContext.path.params);
+                        }
+                        else{
+                            this.HttpContext.path.params.error = "Parameters are invalid";
+                        }
+                    }else {
+                        this.HttpContext.path.params.error = "Parameter 'op' is missing";
+                        this.HttpContext.response.JSON(this.HttpContext.path.params);
                 }
             }
         }
