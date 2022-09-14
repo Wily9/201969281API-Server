@@ -75,7 +75,7 @@ module.exports =
                                         this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) % Number(this.HttpContext.path.params.y);
                                     } 
                                     else{
-                                        this.HttpContext.path.params.error = "Invalid parameters";
+                                        this.HttpContext.path.params.error = "Operator Unsupported";
                                     }
                                 }
                                 // If both of them are not numbers, look if x is a number
