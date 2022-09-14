@@ -31,7 +31,7 @@ function findPrime(n){
 }
 
 function findInvalidParameters(qString){
-    return /[^xypon[\]|+\-*\/%!&\\0-9?=]/.test(qString);
+    return /[^xypon[\]|+\-*\/%!.&\\0-9?=]/.test(qString);
 }
 
 module.exports =
@@ -75,27 +75,27 @@ module.exports =
                                         this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) % Number(this.HttpContext.path.params.y);
                                     } 
                                     else{
-                                        this.HttpContext.path.params.error = "Operator Unsupported";
+                                        this.HttpContext.path.params.error = "This operator is either not supported or does not use x and y values";
                                     }
                                 }
                                 // If both of them are not numbers, look if x is a number
                                 else if(isNaN(this.HttpContext.path.params.x)){
                                     // X is not a number, look if y is not a number
                                     if(isNaN(this.HttpContext.path.params.y)){
-                                        this.HttpContext.path.params.error = "Parameter 'x' and 'y' are not numbers";
+                                        this.HttpContext.path.params.error = "Parameters 'x' and 'y' are not numbers";
                                     }
                                     else{ this.HttpContext.path.params.error = "Parameter 'x' is not a number"; }
                                 }
                                 else{ this.HttpContext.path.params.error = "Parameter 'y' is not a number"; }
                             }
-                            // If both of them are not null, look if x is null
+                            // If both of them are not null, look if x is null (to figure out which one is null)
                             else if(!this.HttpContext.path.params.x){
                                 // x is null, look if y is null
                                 if(!this.HttpContext.path.params.y){
                                     // y is null also, look if n is null
                                     if(!this.HttpContext.path.params.n){
-                                        // if x, y and n are null, parameters are missing for any request
-                                        this.HttpContext.path.params.error = "Parameters are missing";
+                                        // if x, y and n are null, the values of the parameters are missing
+                                        this.HttpContext.path.params.error = "None of the necessary parameters have values";
                                     }
                                     else{
                                         // If n is not null, look if n is a number
@@ -113,8 +113,7 @@ module.exports =
                                             }
                                             else{
                                                 this.HttpContext.path.params.error = "Parameter n is not an whole number";
-                                            }
-                                            
+                                            }  
                                         }
                                         else{
                                             this.HttpContext.path.params.error = "Parameter n is not a number";
@@ -122,22 +121,24 @@ module.exports =
                                     }
                                     
                                 }
+                                // Y is not null, look if y is a number
                                 else if(isNaN(this.HttpContext.path.params.y)){
                                     this.HttpContext.path.params.error = "Parameter 'x' is missing and 'y' is not a number";
                                 }
                                 else{ this.HttpContext.path.params.error = "Parameter 'x' is missing"; }
                             }
+                            // X is not null, look if x is a number
                             else if(isNaN(this.HttpContext.path.params.x)){
                                 this.HttpContext.path.params.error = "Parameter 'x' is not a number and 'y' is missing";
                             }
-                            else{ this.HttpContext.path.params.error = "Parameter 'y' is missing"; }
-                                // Send response
-                                this.HttpContext.response.JSON(this.HttpContext.path.params);
-                        // }
-                        // else{
-                        //     this.HttpContext.path.params.error = "Parameters are invalid";
-                        // }
-                    }else {
+                            // X is a number but y is still missing
+                            else{ 
+                                this.HttpContext.path.params.error = "Parameter 'y' is missing"; 
+                            }
+                            // Send response
+                            this.HttpContext.response.JSON(this.HttpContext.path.params);
+                        }
+                        else {
                         this.HttpContext.path.params.error = "Parameter 'op' is missing";
                         this.HttpContext.response.JSON(this.HttpContext.path.params);
                 }
