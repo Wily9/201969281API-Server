@@ -49,6 +49,7 @@ module.exports =
                 if (findInvalidParameters(qString))
                 {
                     this.HttpContext.path.params.error = "Invalid parameters";
+                    this.HttpContext.response.JSON(this.HttpContext.path.params);
                 }
                 else if(this.HttpContext.path.params.op){
                             // If x and y are not null
