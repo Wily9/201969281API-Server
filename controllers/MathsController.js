@@ -100,7 +100,7 @@ module.exports =
                                     else{
                                         // If n is not null, look if n is a number
                                         if(!isNaN(this.HttpContext.path.params.n)){
-                                            if(Number.isInteger(this.HttpContext.path.params.n)){
+                                            if(this.HttpContext.path.params.n % 1 == 0){
                                                 if(this.HttpContext.path.params.op == "!"){
                                                     this.HttpContext.path.params.value = factorial(this.HttpContext.path.params.n);
                                                 } 
