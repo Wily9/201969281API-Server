@@ -28,6 +28,10 @@ function findPrime(n){
     return primeNumer;
 }
 
+function findInvalidParameters(qString){
+    return /[^xypon[\]|+\-*\/%!&\\0-9?=]/.test(qString);
+}
+
 module.exports =
     class MathsController extends require('./Controller') {
         constructor(HttpContext) {
@@ -42,11 +46,11 @@ module.exports =
             }
             
             else{
-                if (this.HttpContext.path.queryString.indexOf('[^xypon[\]|+\-*\/%!&\1-9 ^op(?==)]') > -1)
+                if (findInvalidParameters(qString))
                 {
                     this.HttpContext.path.params.error = "Invalid parameters";
                 }
-                if(this.HttpContext.path.params.op){
+                else if(this.HttpContext.path.params.op){
                             // If x and y are not null
                             if(this.HttpContext.path.params.x && this.HttpContext.path.params.y){ 
                                 // If x and y are both numbers
