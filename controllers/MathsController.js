@@ -44,8 +44,8 @@ module.exports =
                 let content = fs.readFileSync(helpPagePath);
                 this.HttpContext.response.content("text/html", content);
             }
-            
             else{
+                let qString = this.HttpContext.path.queryString;
                 if (findInvalidParameters(qString))
                 {
                     this.HttpContext.path.params.error = "Invalid parameters";
