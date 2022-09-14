@@ -112,7 +112,7 @@ module.exports =
                                                 }
                                             }
                                             else{
-                                                this.HttpContext.path.params.error = "Parameter n is not an even number";
+                                                this.HttpContext.path.params.error = "Parameter n is not an whole number";
                                             }
                                             
                                         }
