@@ -1,7 +1,6 @@
+// William Marien-Harvey
 const path = require('path');
 const fs = require('fs');
-// const mathScript = require('../wwwroot/MathsManager/js/MathsFunctions');
-// const { count } = require('console');
 
 function factorial(n){
     if(n===0||n===1){
@@ -56,29 +55,25 @@ module.exports =
                             if(this.HttpContext.path.params.x && this.HttpContext.path.params.y){ 
                                 // If x and y are both numbers
                                 if(!isNaN(this.HttpContext.path.params.x) && !isNaN(this.HttpContext.path.params.y)){ 
-                                    // let length = this.HttpContext.path.params.length;
-                                    // if(this.HttpContext.path.queryString == 3){
-                                        // Add the numbers together and put them in a new parameter called value
-                                        if(this.HttpContext.path.params.op == " "){
-                                            this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) + Number(this.HttpContext.path.params.y);
-                                        }
-                                        else if(this.HttpContext.path.params.op == "-"){
-                                            this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) - Number(this.HttpContext.path.params.y);
-                                        }
-                                        else if(this.HttpContext.path.params.op == "*"){
-                                            this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) * Number(this.HttpContext.path.params.y);
-                                        }
-                                        else if(this.HttpContext.path.params.op == "/"){
-                                            this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) / Number(this.HttpContext.path.params.y);
-                                        }
-                                        else if(this.HttpContext.path.params.op == "%"){
-                                            this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) % Number(this.HttpContext.path.params.y);
-                                        } 
-                                    // }
+                                    // Add the numbers together and put them in a new parameter called value
+                                    if(this.HttpContext.path.params.op == " "){
+                                        this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) + Number(this.HttpContext.path.params.y);
+                                    }
+                                    else if(this.HttpContext.path.params.op == "-"){
+                                        this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) - Number(this.HttpContext.path.params.y);
+                                    }
+                                    else if(this.HttpContext.path.params.op == "*"){
+                                        this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) * Number(this.HttpContext.path.params.y);
+                                    }
+                                    else if(this.HttpContext.path.params.op == "/"){
+                                        this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) / Number(this.HttpContext.path.params.y);
+                                    }
+                                    else if(this.HttpContext.path.params.op == "%"){
+                                        this.HttpContext.path.params.value = Number(this.HttpContext.path.params.x) % Number(this.HttpContext.path.params.y);
+                                    } 
                                     else{
                                         this.HttpContext.path.params.error = "Invalid parameters";
                                     }
-                                    // else ifs for ! / p / np
                                 }
                                 // If both of them are not numbers, look if x is a number
                                 else if(isNaN(this.HttpContext.path.params.x)){
