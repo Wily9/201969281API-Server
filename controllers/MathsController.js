@@ -1,4 +1,7 @@
 // William Marien-Harvey
+// J'ai rajouter des validations pour chaque paire de paramètres, 
+// le x et le y doit être les deux des nombres et non null, et chaqu'un deux est une erreur séparée.
+// J'ai également fait la function findInvalidParameters qui regarde si la query string à quelque chose d'invalide
 const path = require('path');
 const fs = require('fs');
 
