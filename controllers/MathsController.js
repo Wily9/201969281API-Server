@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
-const mathScript = require('../wwwroot/MathsManager/js/MathsFunctions');
-const { count } = require('console');
+// const mathScript = require('../wwwroot/MathsManager/js/MathsFunctions');
+// const { count } = require('console');
 
 function factorial(n){
     if(n===0||n===1){
