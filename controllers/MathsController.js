@@ -42,9 +42,11 @@ module.exports =
             }
             
             else{
-                let params = this.HttpContext.path.params;
-                let argLength = arguments.length;
-                if(params == 'op'){
+                if (this.HttpContext.path.queryString.indexOf('[^xypon[\]|+\-*\/%!&\1-9 ^op(?==)]') > -1)
+                {
+                    this.HttpContext.path.params.error = "Invalid parameters";
+                }
+                if(this.HttpContext.path.params.op){
                             // If x and y are not null
                             if(this.HttpContext.path.params.x && this.HttpContext.path.params.y){ 
                                 // If x and y are both numbers
