@@ -40,8 +40,11 @@ module.exports =
                 let content = fs.readFileSync(helpPagePath);
                 this.HttpContext.response.content("text/html", content);
             }
+            
             else{
-                if(this.HttpContext.path.params.op){
+                let params = this.HttpContext.path.params;
+                let argLength = arguments.length;
+                if(params == 'op'){
                             // If x and y are not null
                             if(this.HttpContext.path.params.x && this.HttpContext.path.params.y){ 
                                 // If x and y are both numbers
